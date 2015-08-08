@@ -71,6 +71,11 @@
         <th>Gênero</th>
         <th>Nascimento</th>
         <th>CEP</th>
+        <th>Rua</th>
+        <th>Número</th>
+        <th>Bairro</th>
+        <th>Cidade</th>
+        <th>Estado</th>
         <th>Apagar</th>
       </tr>
       <tr ng-repeat="prof in professores">
@@ -80,6 +85,11 @@
         <td>{{ prof.genero }}</td>
         <td>{{ prof.nascimento }}</td>
         <td>{{ prof.cep }}</td>
+        <td>{{ prof.rua }}</td>
+        <td>{{ prof.numero }}</td>
+        <td>{{ prof.bairro }}</td>
+        <td>{{ prof.cidade }}</td>
+        <td>{{ prof.estado }}</td>
         <td>
           <input type="button" ng-click="apagar(prof)" value="Apagar" />
         </td>
