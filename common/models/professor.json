@@ -20,6 +20,24 @@
     },
     "nascimento": {
       "type": "date"
+    },
+    "cep": {
+      "type": "string"
+    },
+    "rua": {
+      "type": "string"
+    },
+    "numero": {
+      "type": "number"
+    },
+    "bairro": {
+      "type": "string"
+    },
+    "cidade": {
+      "type": "string"
+    },
+    "estado": {
+      "type": "string"
     }
   },
   "validations": [],
