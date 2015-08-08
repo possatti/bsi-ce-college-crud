@@ -7,11 +7,11 @@
     "validateUpsert": true
   },
   "properties": {
-    "cpf": {
+    "nome": {
       "type": "string",
       "required": true
     },
-    "nome": {
+    "cpf": {
       "type": "string",
       "required": true
     },
