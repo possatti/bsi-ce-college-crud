@@ -133,37 +133,37 @@
               </div>
               <div class="panel-body">
 
-                <form novalidate>
-                  <div class="form-group">
+                <form novalidate name="profForm">
+                  <div class="form-group" ng-class="{ 'has-error': profForm.nome.$invalid && profForm.nome.$dirty }">
                     <label for="nomeProfessor">Nome</label>
-                    <input type="text" class="form-control" id="nomeProfessor" ng-model="professor.nome" required />
+                    <input type="text" class="form-control" id="nomeProfessor" name="nome" ng-model="professor.nome" required />
                   </div>
-                  <div class="form-group">
+                  <div class="form-group" ng-class="{ 'has-error': profForm.cpf.$invalid && profForm.cpf.$dirty }">
                     <label for="cpf">CPF</label>
-                    <input type="text" class="form-control" id="cpf" ng-model="professor.cpf" required />
+                    <input type="text" class="form-control" id="cpf" name="cpf" ng-model="professor.cpf" required />
                   </div>
                   <div class="form-group">
                     <label>Genero</label><br />
                     <input type="radio" ng-model="professor.genero" value="masculino" />Masculino
                     <input type="radio" ng-model="professor.genero" value="feminino" />Feminino
                   </div>
-                  <div class="form-group">
+                  <div class="form-group" ng-class="{ 'has-error': profForm.nascimento.$invalid && profForm.nascimento.$dirty }">
                     <label for="nascimento">Data de Nascimento</label>
-                    <input type="text" class="form-control" id="nascimento" pattern="\d\d/\d\d/\d\d\d\d" ng-model="professor.nascimento" />
+                    <input type="text" class="form-control" id="nascimento" name="nascimento" pattern="\d\d/\d\d/\d\d\d\d" ng-model="professor.nascimento" />
                   </div>
 
 
-                  <div class="form-group">
+                  <div class="form-group" ng-class="{ 'has-error': profForm.cep.$invalid && profForm.cep.$dirty }">
                     <label for="cep">CEP</label>
-                    <input id="cep" type="text" class="form-control" name="cep" ng-model="professor.cep" pattern="\d{8}" ng-change="cepAlterado();" />
+                    <input id="cep" name="cep" type="text" class="form-control" name="cep" ng-model="professor.cep" pattern="\d{8}" ng-change="cepAlterado();" />
                   </div>
                   <div class="form-group">
                     <label for="rua">Rua</label>
                     <input id="rua" disabled type="text" class="form-control" name="rua" ng-model="professor.rua" />
                   </div>
-                  <div class="form-group">
+                  <div class="form-group" ng-class="{ 'has-error': profForm.numeroEndereco.$invalid && profForm.numeroEndereco.$dirty }">
                     <label for="numeroEndereco">Número</label>
-                    <input id="numeroEndereco" type="text" class="form-control" name="numero" ng-model="professor.numero" />
+                    <input id="numeroEndereco" name="numeroEndereco" type="number" class="form-control" name="numero" ng-model="professor.numero" />
                   </div>
                   <div class="form-group">
                     <label for="bairro">Bairro</label>
@@ -178,7 +178,13 @@
                     <input id="estado" disabled type="text" class="form-control" name="estado" ng-model="professor.estado" />
                   </div>
 
-                  <input type="submit" class="btn btn-primary" ng-click="cadastrar(professor)" value="Cadastrar" />
+                  <input type="submit" class="btn btn-primary" ng-click="cadastrar(professor)" value="Cadastrar" ng-disabled="
+                  profForm.nome.$invalid ||
+                  profForm.cpf.$invalid ||
+                  profForm.nascimento.$invalid ||
+                  profForm.cep.$invalid ||
+                  profForm.numeroEndereco.$invalid
+                  "/>
 
                 </form>
               </div>
