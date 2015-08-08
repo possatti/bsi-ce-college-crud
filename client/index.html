@@ -67,15 +67,15 @@
                   </div>
                   <div class="form-group" ng-class="{ 'has-error': discForm.periodo.$invalid && discForm.periodo.$dirty }">
                     <label for="periodo">Período</label>
-                    <input type="number" class="form-control" id="periodo" name="periodo" ng-model="disciplina.periodo" />
+                    <input type="number" class="form-control" id="periodo" name="periodo" ng-model="disciplina.periodo" required />
                   </div>
                   <div class="form-group" ng-class="{ 'has-error': discForm.vagas.$invalid && discForm.vagas.$dirty }">
                     <label for="vagas">Número de Vagas</label>
-                    <input type="number" class="form-control" id="vagas" name="vagas" ng-model="disciplina.vagas" />
+                    <input type="number" class="form-control" id="vagas" name="vagas" ng-model="disciplina.vagas" required />
                   </div>
                   <div class="form-group" ng-class="{ 'has-error': discForm.idProfessor.$invalid && discForm.idProfessor.$dirty }">
                     <label for="idProfessor">ID do Professor</label>
-                    <input type="number" class="form-control" id="idProfessor" name="idProfessor" ng-model="disciplina.professorId" />
+                    <input type="number" class="form-control" id="idProfessor" name="idProfessor" ng-model="disciplina.professorId" required />
                   </div>
 
                   <input type="submit" class="btn btn-primary" ng-click="cadastrar(disciplina)" value="Cadastrar" ng-disabled="
@@ -147,13 +147,13 @@
                   </div>
                   <div class="form-group" ng-class="{ 'has-error': profForm.nascimento.$invalid && profForm.nascimento.$dirty }">
                     <label for="nascimento">Data de Nascimento</label>
-                    <input type="text" class="form-control" id="nascimento" name="nascimento" pattern="\d\d/\d\d/\d\d\d\d" ng-model="professor.nascimento" />
+                    <input type="text" class="form-control" id="nascimento" name="nascimento" pattern="\d\d/\d\d/\d\d\d\d" ng-model="professor.nascimento" required />
                   </div>
 
 
                   <div class="form-group" ng-class="{ 'has-error': profForm.cep.$invalid && profForm.cep.$dirty }">
                     <label for="cep">CEP</label>
-                    <input id="cep" name="cep" type="text" class="form-control" name="cep" ng-model="professor.cep" pattern="\d{8}" ng-change="cepAlterado();" />
+                    <input id="cep" name="cep" type="text" class="form-control" name="cep" ng-model="professor.cep" pattern="\d{8}" ng-change="cepAlterado();" required />
                   </div>
                   <div class="form-group">
                     <label for="rua">Rua</label>
@@ -161,7 +161,7 @@
                   </div>
                   <div class="form-group" ng-class="{ 'has-error': profForm.numeroEndereco.$invalid && profForm.numeroEndereco.$dirty }">
                     <label for="numeroEndereco">Número</label>
-                    <input id="numeroEndereco" name="numeroEndereco" type="number" class="form-control" name="numero" ng-model="professor.numero" />
+                    <input id="numeroEndereco" name="numeroEndereco" type="number" class="form-control" name="numero" ng-model="professor.numero" required />
                   </div>
                   <div class="form-group">
                     <label for="bairro">Bairro</label>
