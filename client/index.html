@@ -2,101 +2,168 @@
 <head>
   <title>Loopback App</title>
   <meta charset="UTF-8">
+
+  <!-- Angular -->
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+
+  <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
 </head>
 <body ng-app="App">
 
-  <div ng-controller="DisciplinaController">
-    <h2>Cadastro de Disciplina:</h2>
-    <form novalidate>
-      Nome: <input type="text" ng-model="disciplina.nome" required /><br />
-      Período: <input type="number" ng-model="disciplina.periodo" /><br />
-      Número de Vagas: <input type="number" ng-model="disciplina.vagas" /><br />
-      ID do professor: <input type="number" ng-model="disciplina.professorId" /><br />
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">College CRUD</a>
+      </div>
 
-      <input type="submit" ng-click="cadastrar(disciplina)" value="Cadastrar" />
-    </form>
-    <pre>form = {{disciplina | json}}</pre>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+        </ul>
+        
+        <ul class="nav navbar-nav navbar-right">
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
 
-  <h2>Disciplinas Cadastradas:</h2>
-    <table border="1px">
-      <tr>
-        <th>ID</th>
-        <th>Nome</th>
-        <th>Período</th>
-        <th>Nº de Vagas</th>
-        <th>ID do Professor</th>
-        <th>Apagar</th>
-      </tr>
-      <tr ng-repeat="disc in disciplinas">
-        <td>{{ disc.id }}</td>
-        <td>{{ disc.nome }}</td>
-        <td>{{ disc.periodo }}</td>
-        <td>{{ disc.vagas }}</td>
-        <td>{{ disc.professorId }}</td>
-        <td>
-          <input type="button" ng-click="apagar(disc)" value="Apagar" />
-        </td>
-      </tr>
-    </table>
-  </div>
 
-  <div ng-controller="ProfessorController">
-    <h2>Cadastro de Professor:</h2>
-    <form novalidate>
-      Nome: <input type="text" ng-model="professor.nome" required /><br />
-      CPF: <input type="text" ng-model="professor.cpf" required /><br />
-      Gênero:
-      <input type="radio" ng-model="professor.genero" value="masculino" />Masculino
-      <input type="radio" ng-model="professor.genero" value="feminino" />Feminino<br />
-      Data de Nascimento:  <input type="text" pattern="\d\d/\d\d/\d\d\d\d" ng-model="professor.nascimento" /><br />
+  <div class="container">
+    <ul class="nav nav-tabs">
+        <li class="nav active"><a href="#DiscTab" data-toggle="tab">Disciplinas</a></li>
+        <li class="nav"><a href="#ProfTab" data-toggle="tab">Professores</a></li>
+    </ul>
 
-      CEP: <input type="text" name="cep" ng-model="professor.cep" pattern="\d{8}" ng-change="cepAlterado();" /><br />
-      Rua: <input disabled type="text" name="rua" ng-model="professor.rua" /><br />
-      Numero: <input type="text" name="numero" ng-model="professor.numero" /><br />
-      Bairro: <input disabled type="text" name="bairro" ng-model="professor.bairro" /><br />
-      Cidade: <input disabled type="text" name="cidade" ng-model="professor.cidade" /><br />
-      Estado: <input disabled type="text" name="estado" ng-model="professor.estado" /><br />
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div class="tab-pane fade in active" id="DiscTab">
 
-      <input type="submit" ng-click="cadastrar(professor)" value="Cadastrar" />
-    </form>
-    <pre>form = {{professor | json}}</pre>
+          <div ng-controller="DisciplinaController">
+            <h2>Cadastro de Disciplina:</h2>
+            <form novalidate>
+              <div class="form-group">
+                <label for="nomeDisciplina">Nome da Disciplina</label>
+                <input type="text" class="form-control" id="nomeDisciplina" ng-model="disciplina.nome" required />
+              </div>
+              <div class="form-group">
+                <label for="periodo">Período</label>
+                <input type="number" class="form-control" id="periodo" ng-model="disciplina.periodo" />
+              </div>
+              <div class="form-group">
+                <label for="vagas">Número de Vagas</label>
+                <input type="number" class="form-control" id="vagas" ng-model="disciplina.vagas" />
+              </div>
+              <div class="form-group">
+                <label for="idProfessor">ID do Professor</label>
+                <input type="number" class="form-control" id="idProfessor" ng-model="disciplina.professorId" />
+              </div>
 
-    <h2>Professores Cadastrados:</h2>
-    <table border="1px">
-      <tr>
-        <th>ID</th>
-        <th>Nome</th>
-        <th>CPF</th>
-        <th>Gênero</th>
-        <th>Nascimento</th>
-        <th>CEP</th>
-        <th>Rua</th>
-        <th>Número</th>
-        <th>Bairro</th>
-        <th>Cidade</th>
-        <th>Estado</th>
-        <th>Apagar</th>
-      </tr>
-      <tr ng-repeat="prof in professores">
-        <td>{{ prof.id }}</td>
-        <td>{{ prof.nome }}</td>
-        <td>{{ prof.cpf }}</td>
-        <td>{{ prof.genero }}</td>
-        <td>{{ prof.nascimento }}</td>
-        <td>{{ prof.cep }}</td>
-        <td>{{ prof.rua }}</td>
-        <td>{{ prof.numero }}</td>
-        <td>{{ prof.bairro }}</td>
-        <td>{{ prof.cidade }}</td>
-        <td>{{ prof.estado }}</td>
-        <td>
-          <input type="button" ng-click="apagar(prof)" value="Apagar" />
-        </td>
-      </tr>
-    </table>
-  </div>
+              <input type="submit" class="btn btn-primary" ng-click="cadastrar(disciplina)" value="Cadastrar" />
+            </form>
+            <pre>form = {{disciplina | json}}</pre>
 
+          <h2>Disciplinas Cadastradas:</h2>
+            <table border="1px">
+              <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Período</th>
+                <th>Nº de Vagas</th>
+                <th>ID do Professor</th>
+                <th>Apagar</th>
+              </tr>
+              <tr ng-repeat="disc in disciplinas">
+                <td>{{ disc.id }}</td>
+                <td>{{ disc.nome }}</td>
+                <td>{{ disc.periodo }}</td>
+                <td>{{ disc.vagas }}</td>
+                <td>{{ disc.professorId }}</td>
+                <td>
+                  <input type="button" ng-click="apagar(disc)" value="Apagar" />
+                </td>
+              </tr>
+            </table>
+          </div>
+
+        </div>
+        <div class="tab-pane fade" id="ProfTab">
+
+          <div ng-controller="ProfessorController">
+            <h2>Cadastro de Professor:</h2>
+            <form novalidate>
+              Nome: <input type="text" ng-model="professor.nome" required /><br />
+              CPF: <input type="text" ng-model="professor.cpf" required /><br />
+              Gênero:
+              <input type="radio" ng-model="professor.genero" value="masculino" />Masculino
+              <input type="radio" ng-model="professor.genero" value="feminino" />Feminino<br />
+              Data de Nascimento:  <input type="text" pattern="\d\d/\d\d/\d\d\d\d" ng-model="professor.nascimento" /><br />
+
+              CEP: <input type="text" name="cep" ng-model="professor.cep" pattern="\d{8}" ng-change="cepAlterado();" /><br />
+              Rua: <input disabled type="text" name="rua" ng-model="professor.rua" /><br />
+              Numero: <input type="text" name="numero" ng-model="professor.numero" /><br />
+              Bairro: <input disabled type="text" name="bairro" ng-model="professor.bairro" /><br />
+              Cidade: <input disabled type="text" name="cidade" ng-model="professor.cidade" /><br />
+              Estado: <input disabled type="text" name="estado" ng-model="professor.estado" /><br />
+
+              <input type="submit" ng-click="cadastrar(professor)" value="Cadastrar" />
+            </form>
+            <pre>form = {{professor | json}}</pre>
+
+            <h2>Professores Cadastrados:</h2>
+            <table border="1px">
+              <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>CPF</th>
+                <th>Gênero</th>
+                <th>Nascimento</th>
+                <th>CEP</th>
+                <th>Rua</th>
+                <th>Número</th>
+                <th>Bairro</th>
+                <th>Cidade</th>
+                <th>Estado</th>
+                <th>Apagar</th>
+              </tr>
+              <tr ng-repeat="prof in professores">
+                <td>{{ prof.id }}</td>
+                <td>{{ prof.nome }}</td>
+                <td>{{ prof.cpf }}</td>
+                <td>{{ prof.genero }}</td>
+                <td>{{ prof.nascimento }}</td>
+                <td>{{ prof.cep }}</td>
+                <td>{{ prof.rua }}</td>
+                <td>{{ prof.numero }}</td>
+                <td>{{ prof.bairro }}</td>
+                <td>{{ prof.cidade }}</td>
+                <td>{{ prof.estado }}</td>
+                <td>
+                  <input type="button" ng-click="apagar(prof)" value="Apagar" />
+                </td>
+              </tr>
+            </table>
+          </div>
+
+        </div>
+    </div>
+</div>
+
+
+  
 
   <!-- MODULES -->
   <script src="js/apps.js"></script>
