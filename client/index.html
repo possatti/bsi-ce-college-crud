@@ -6,6 +6,41 @@
 </head>
 <body ng-app="App">
 
+  <div ng-controller="DisciplinaController">
+    <h2>Cadastro de Disciplina:</h2>
+    <form novalidate>
+      Nome: <input type="text" ng-model="disciplina.nome" required /><br />
+      Período: <input type="number" ng-model="disciplina.periodo" /><br />
+      Número de Vagas: <input type="number" ng-model="disciplina.vagas" /><br />
+      ID do professor: <input type="number" ng-model="disciplina.professorId" /><br />
+
+      <input type="submit" ng-click="cadastrar(disciplina)" value="Cadastrar" />
+    </form>
+    <pre>form = {{disciplina | json}}</pre>
+
+  <h2>Disciplinas Cadastradas:</h2>
+    <table border="1px">
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Período</th>
+        <th>Nº de Vagas</th>
+        <th>ID do Professor</th>
+        <th>Apagar</th>
+      </tr>
+      <tr ng-repeat="disc in disciplinas">
+        <td>{{ disc.id }}</td>
+        <td>{{ disc.nome }}</td>
+        <td>{{ disc.periodo }}</td>
+        <td>{{ disc.vagas }}</td>
+        <td>{{ disc.professorId }}</td>
+        <td>
+          <input type="button" ng-click="apagar(disc)" value="Apagar" />
+        </td>
+      </tr>
+    </table>
+  </div>
+
   <div ng-controller="ProfessorController">
     <h2>Cadastro de Professor:</h2>
     <form novalidate>
@@ -58,6 +93,7 @@
 
   <!-- CONTROLLERS -->
   <script src="js/controllers/ProfessorController.js"></script>
+  <script src="js/controllers/DisciplinaController.js"></script>
 
   <!-- SERVICES -->
   <script src="js/services/lb-services.js"></script>
