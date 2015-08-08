@@ -8,30 +8,26 @@ App.controller('MainController', ['$scope', '$http', 'Professor', function($scop
 
   $scope.cadastrar = function(professor) {
     Professor.create({}, professor, function(value) {
-      alert("O professor foi cadastrado.");
       $scope.professores.push(value);
     }, function(errResponse) {
-      alert("O professor não pode ser cadastrado.");
-      console.log(errResponse);
+      alert("O professor não pôde ser cadastrado.");
+      console.error(errResponse);
     });
   };
 
   $scope.apagar = function(professor) {
     Professor.destroyById({id:professor.id}, function(value) {
-      console.log("Professor deletado:");
-      console.log(value);
+      var index = $scope.professores.indexOf(professor);
+      if (index > -1) {
+        $scope.professores.splice(index, 1);
+      }
     }, function(errResponse) {
-      console.log("Não foi possível deletara o professor:");
-      console.log(errResponse);
+      alert("Não foi possível deletar o professor.");
+      console.error(errResponse);
     });
-    var index = $scope.professores.indexOf(professor);
-    if (index > -1) {
-      $scope.professores.splice(index, 1);
-    }
   };
 
   $scope.cepAlterado = function() {
-    console.log($scope.professor.cep);
     $http.get('http://cep.correiocontrol.com.br/' + $scope.professor.cep + '.json')
     .then(function(response) {
       $scope.professor.rua = response.data.logradouro;
