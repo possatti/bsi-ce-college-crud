@@ -1,0 +1,25 @@
+{
+  "name": "disciplina",
+  "plural": "disciplinas",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "nome": {
+      "type": "string",
+      "required": true
+    },
+    "periodo": {
+      "type": "number"
+    },
+    "vagas": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}

@@ -1,0 +1,29 @@
+{
+  "name": "professor",
+  "plural": "professores",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "cpf": {
+      "type": "string",
+      "required": true
+    },
+    "nome": {
+      "type": "string",
+      "required": true
+    },
+    "genero": {
+      "type": "string"
+    },
+    "nascimento": {
+      "type": "date"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}
