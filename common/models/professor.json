@@ -41,7 +41,13 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "disciplinas": {
+      "type": "hasMany",
+      "model": "disciplina",
+      "foreignKey": ""
+    }
+  },
   "acls": [],
   "methods": []
 }
