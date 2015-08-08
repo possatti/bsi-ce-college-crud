@@ -1,6 +1,6 @@
 'use strict';
 
-App.controller('MainController', ['$scope', '$http', 'Professor', function($scope, $http, Professor) {
+App.controller('ProfessorController', ['$scope', '$http', 'Professor', function($scope, $http, Professor) {
 
   $scope.professores = [];
 

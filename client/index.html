@@ -4,61 +4,62 @@
   <meta charset="UTF-8">
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
 </head>
-<body ng-app="App" ng-controller="MainController">
+<body ng-app="App">
 
-  <form novalidate>
+  <div ng-controller="ProfessorController">
     <h2>Cadastro de Professor:</h2>
-    Nome: <input type="text" ng-model="professor.nome" required /><br />
-    CPF: <input type="text" ng-model="professor.cpf" required /><br />
-    Gênero:
-    <input type="radio" ng-model="professor.genero" value="masculino" />Masculino
-    <input type="radio" ng-model="professor.gender" value="feminino" />Feminino<br />
-    Data de Nascimento:  <input type="text" ng-model="professor.nascimento" /><br />
+    <form novalidate>
+      Nome: <input type="text" ng-model="professor.nome" required /><br />
+      CPF: <input type="text" ng-model="professor.cpf" required /><br />
+      Gênero:
+      <input type="radio" ng-model="professor.genero" value="masculino" />Masculino
+      <input type="radio" ng-model="professor.gender" value="feminino" />Feminino<br />
+      Data de Nascimento:  <input type="text" ng-model="professor.nascimento" /><br />
 
-    CEP: <input type="text" name="cep" ng-model="professor.cep" pattern="\d{8}" ng-change="cepAlterado();" /><br />
-    Rua: <input disabled type="text" name="rua" ng-model="professor.rua" /><br />
-    Numero: <input type="text" name="numero" ng-model="professor.numero" /><br />
-    Bairro: <input disabled type="text" name="bairro" ng-model="professor.bairro" /><br />
-    Cidade: <input disabled type="text" name="cidade" ng-model="professor.cidade" /><br />
-    Estado: <input disabled type="text" name="estado" ng-model="professor.estado" /><br />
+      CEP: <input type="text" name="cep" ng-model="professor.cep" pattern="\d{8}" ng-change="cepAlterado();" /><br />
+      Rua: <input disabled type="text" name="rua" ng-model="professor.rua" /><br />
+      Numero: <input type="text" name="numero" ng-model="professor.numero" /><br />
+      Bairro: <input disabled type="text" name="bairro" ng-model="professor.bairro" /><br />
+      Cidade: <input disabled type="text" name="cidade" ng-model="professor.cidade" /><br />
+      Estado: <input disabled type="text" name="estado" ng-model="professor.estado" /><br />
 
-    <input type="submit" ng-click="cadastrar(professor)" value="Cadastrar" />
-  </form>
-  <pre>form = {{professor | json}}</pre>
+      <input type="submit" ng-click="cadastrar(professor)" value="Cadastrar" />
+    </form>
+    <pre>form = {{professor | json}}</pre>
 
-  <h2>Professores Cadastrados:</h2>
-  <table border="1px">
-    <tr>
-      <th>ID</th>
-      <th>Nome</th>
-      <th>CPF</th>
-      <th>Gênero</th>
-      <th>Nascimento</th>
-      <th>CEP</th>
-      <th>Apagar</th>
-    </tr>
-    <tr ng-repeat="prof in professores">
-      <td>{{ prof.id }}</td>
-      <td>{{ prof.nome }}</td>
-      <td>{{ prof.cpf }}</td>
-      <td>{{ prof.genero }}</td>
-      <td>{{ prof.nascimento }}</td>
-      <td>{{ prof.cep }}</td>
-      <td>
-        <input type="button" ng-click="apagar(prof)" value="Apagar" />
-      </td>
-    </tr>
-  </table>
+    <h2>Professores Cadastrados:</h2>
+    <table border="1px">
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>CPF</th>
+        <th>Gênero</th>
+        <th>Nascimento</th>
+        <th>CEP</th>
+        <th>Apagar</th>
+      </tr>
+      <tr ng-repeat="prof in professores">
+        <td>{{ prof.id }}</td>
+        <td>{{ prof.nome }}</td>
+        <td>{{ prof.cpf }}</td>
+        <td>{{ prof.genero }}</td>
+        <td>{{ prof.nascimento }}</td>
+        <td>{{ prof.cep }}</td>
+        <td>
+          <input type="button" ng-click="apagar(prof)" value="Apagar" />
+        </td>
+      </tr>
+    </table>
+  </div>
 
 
   <!-- MODULES -->
   <script src="js/apps.js"></script>
 
   <!-- CONTROLLERS -->
-  <script src="js/controllers/MainController.js"></script>
+  <script src="js/controllers/ProfessorController.js"></script>
 
   <!-- SERVICES -->
-  <script src="js/services/CorreioAPI.js"></script>
   <script src="js/services/lb-services.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular-route.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular-resource.js"></script>
