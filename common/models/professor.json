@@ -19,7 +19,7 @@
       "type": "string"
     },
     "nascimento": {
-      "type": "date"
+      "type": "string"
     },
     "cep": {
       "type": "string"
