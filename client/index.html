@@ -120,59 +120,109 @@
         <div class="tab-pane fade" id="ProfTab">
 
           <div ng-controller="ProfessorController">
-            <h2>Cadastro de Professor:</h2>
-            <form novalidate>
-              Nome: <input type="text" ng-model="professor.nome" required /><br />
-              CPF: <input type="text" ng-model="professor.cpf" required /><br />
-              Gênero:
-              <input type="radio" ng-model="professor.genero" value="masculino" />Masculino
-              <input type="radio" ng-model="professor.genero" value="feminino" />Feminino<br />
-              Data de Nascimento:  <input type="text" pattern="\d\d/\d\d/\d\d\d\d" ng-model="professor.nascimento" /><br />
+            <br />
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <h3 class="panel-title">Cadastro de Professor</h3>
+              </div>
+              <div class="panel-body">
 
-              CEP: <input type="text" name="cep" ng-model="professor.cep" pattern="\d{8}" ng-change="cepAlterado();" /><br />
-              Rua: <input disabled type="text" name="rua" ng-model="professor.rua" /><br />
-              Numero: <input type="text" name="numero" ng-model="professor.numero" /><br />
-              Bairro: <input disabled type="text" name="bairro" ng-model="professor.bairro" /><br />
-              Cidade: <input disabled type="text" name="cidade" ng-model="professor.cidade" /><br />
-              Estado: <input disabled type="text" name="estado" ng-model="professor.estado" /><br />
+                <form novalidate>
+                  <div class="form-group">
+                    <label for="nomeProfessor">Nome</label>
+                    <input type="text" class="form-control" id="nomeProfessor" ng-model="professor.nome" required />
+                  </div>
+                  <div class="form-group">
+                    <label for="cpf">CPF</label>
+                    <input type="text" class="form-control" id="cpf" ng-model="professor.cpf" required />
+                  </div>
+                  <div class="form-group">
+                    <label>Genero</label><br />
+                    <input type="radio" ng-model="professor.genero" value="masculino" />Masculino
+                    <input type="radio" ng-model="professor.genero" value="feminino" />Feminino
+                  </div>
+                  <div class="form-group">
+                    <label for="nascimento">Data de Nascimento</label>
+                    <input type="text" class="form-control" id="nascimento" pattern="\d\d/\d\d/\d\d\d\d" ng-model="professor.nascimento" />
+                  </div>
 
-              <input type="submit" ng-click="cadastrar(professor)" value="Cadastrar" />
-            </form>
+
+                  <div class="form-group">
+                    <label for="cep">CEP</label>
+                    <input id="cep" type="text" class="form-control" name="cep" ng-model="professor.cep" pattern="\d{8}" ng-change="cepAlterado();" />
+                  </div>
+                  <div class="form-group">
+                    <label for="rua">Rua</label>
+                    <input id="rua" disabled type="text" class="form-control" name="rua" ng-model="professor.rua" />
+                  </div>
+                  <div class="form-group">
+                    <label for="numeroEndereco">Número</label>
+                    <input id="numeroEndereco" type="text" class="form-control" name="numero" ng-model="professor.numero" />
+                  </div>
+                  <div class="form-group">
+                    <label for="bairro">Bairro</label>
+                    <input id="bairro" disabled type="text" class="form-control" name="bairro" ng-model="professor.bairro" />
+                  </div>
+                  <div class="form-group">
+                    <label for="cidade">Cidade</label>
+                    <input id="cidade" disabled type="text" class="form-control" name="cidade" ng-model="professor.cidade" />
+                  </div>
+                  <div class="form-group">
+                    <label for="estado">Estado</label>
+                    <input id="estado" disabled type="text" class="form-control" name="estado" ng-model="professor.estado" />
+                  </div>
+
+                  <input type="submit" class="btn btn-primary" ng-click="cadastrar(professor)" value="Cadastrar" />
+
+                </form>
+              </div>
+            </div>
+
             <pre>form = {{professor | json}}</pre>
 
-            <h2>Professores Cadastrados:</h2>
-            <table border="1px">
-              <tr>
-                <th>ID</th>
-                <th>Nome</th>
-                <th>CPF</th>
-                <th>Gênero</th>
-                <th>Nascimento</th>
-                <th>CEP</th>
-                <th>Rua</th>
-                <th>Número</th>
-                <th>Bairro</th>
-                <th>Cidade</th>
-                <th>Estado</th>
-                <th>Apagar</th>
-              </tr>
-              <tr ng-repeat="prof in professores">
-                <td>{{ prof.id }}</td>
-                <td>{{ prof.nome }}</td>
-                <td>{{ prof.cpf }}</td>
-                <td>{{ prof.genero }}</td>
-                <td>{{ prof.nascimento }}</td>
-                <td>{{ prof.cep }}</td>
-                <td>{{ prof.rua }}</td>
-                <td>{{ prof.numero }}</td>
-                <td>{{ prof.bairro }}</td>
-                <td>{{ prof.cidade }}</td>
-                <td>{{ prof.estado }}</td>
-                <td>
-                  <input type="button" ng-click="apagar(prof)" value="Apagar" />
-                </td>
-              </tr>
-            </table>
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <h3 class="panel-title">Professores Cadastrados</h3>
+              </div>
+              <div class="panel-body">
+
+                <table class="table table-striped table-bordered">
+                  <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>CPF</th>
+                    <th>Gênero</th>
+                    <th>Nascimento</th>
+                    <th>CEP</th>
+                    <th>Rua</th>
+                    <th>Número</th>
+                    <th>Bairro</th>
+                    <th>Cidade</th>
+                    <th>Estado</th>
+                    <th>Apagar</th>
+                  </tr>
+                  <tr ng-repeat="prof in professores">
+                    <td>{{ prof.id }}</td>
+                    <td>{{ prof.nome }}</td>
+                    <td>{{ prof.cpf }}</td>
+                    <td>{{ prof.genero }}</td>
+                    <td>{{ prof.nascimento }}</td>
+                    <td>{{ prof.cep }}</td>
+                    <td>{{ prof.rua }}</td>
+                    <td>{{ prof.numero }}</td>
+                    <td>{{ prof.bairro }}</td>
+                    <td>{{ prof.cidade }}</td>
+                    <td>{{ prof.estado }}</td>
+                    <td>
+                      <button type="button" class="btn btn-danger btn-sm" ng-click="apagar(disc)">
+                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Apagar
+                      </button>
+                    </td>
+                  </tr>
+                </table>
+
+              </div>
+            </div>
           </div>
 
         </div>
